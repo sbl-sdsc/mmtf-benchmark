@@ -1,305 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>edu.sdsc</groupId>
-	<artifactId>mmtf-benchmark</artifactId>
-	<version>0.0.0</version>
-	<packaging>jar</packaging>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<name>benchmark</name>
-	<url>http://maven.apache.org</url>
+  <groupId>edu.sdsc.benchmark</groupId>
+  <artifactId>mmtf-bm</artifactId>
+  <version>1.0-SNAPSHOT</version>
 
-	<properties>
-		<jdk.version>11</jdk.version>
-		<maven.enforcer.jdk-version>11</maven.enforcer.jdk-version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.targetEncoding>UTF-8</project.build.targetEncoding>
-		<maxmem>512M</maxmem>
-		<slf4j.version>1.7.33</slf4j.version>
-		<log4j.version>2.17.1</log4j.version>
-		<mmtf.version>1.0.11</mmtf.version>
-		<biojava.version>6.1.0</biojava.version>
-		<spark.version>3.1.2</spark.version>
-	</properties>
+  <name>mmtf-bm</name>
+  <url>https://mmtf.rcsb.org</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.biojava</groupId>
-			<artifactId>biojava-structure</artifactId>
-			<version>${biojava.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.rcsb</groupId>
-					<artifactId>mmtf-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.rcsb</groupId>
-					<artifactId>mmtf-serialization</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.rcsb</groupId>
-					<artifactId>mmtf-decoder</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.rcsb</groupId>
-					<artifactId>mmtf-encoder</artifactId>
-				</exclusion>
-				
-				<exclusion>
-					<groupId>org.apache.logging.log4j</groupId>
-					<artifactId>log4j-slf4j-impl</artifactId>
-				</exclusion>
-				
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.rcsb</groupId>
-			<artifactId>mmtf-api</artifactId>
-			<version>${mmtf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.rcsb</groupId>
-			<artifactId>mmtf-serialization</artifactId>
-			<version>${mmtf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.rcsb</groupId>
-			<artifactId>mmtf-codec</artifactId>
-			<version>${mmtf.version}</version>
-		</dependency>
+  <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+  </properties>
 
-		<dependency>
-			<groupId>uk.co.jemos.podam</groupId>
-			<artifactId>podam</artifactId>
-			<version>2.3.5.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.unitils</groupId>
-			<artifactId>unitils-core</artifactId>
-			<version>3.4.6</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<!-- binding for log4j 2 -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${log4j.version}</version>
-			<!-- runtime scope includes the test scope as well -->
-			<scope>runtime</scope>
-		</dependency>
-		<!-- Log4j API and Core implementation required for binding -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j.version}</version>
-			<!-- runtime scope includes the test scope as well -->
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-			<!-- runtime scope includes the test scope as well -->
-			<scope>runtime</scope>
-		</dependency>
-	</dependencies>
-<!--	<distributionManagement>-->
-<!--		<downloadUrl>http://nexus.rcsb.org/nexus/content/repositories/releases/</downloadUrl>-->
-<!--		<repository>-->
-<!--			<id>releases</id>-->
-<!--			<name>RCSB PDB Maven Repository</name>-->
-<!--			<url>http://nexus.rcsb.org/nexus/content/repositories/releases</url>-->
-<!--		</repository>-->
-<!--		<snapshotRepository>-->
-<!--			<id>snapshots</id>-->
-<!--			<url>http://nexus.rcsb.org/nexus/content/repositories/snapshots</url>-->
-<!--			<uniqueVersion>false</uniqueVersion>-->
-<!--		</snapshotRepository>-->
-<!--	</distributionManagement>-->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-				</configuration>
-			</plugin>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.biojava</groupId>
+      <artifactId>biojava-structure</artifactId>
+      <version>6.1.0</version>
+    </dependency>
+      <!-- other biojava jars as needed -->
+  </dependencies>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<debug>true</debug>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.2.4</version>
-
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<shadedArtifactAttached>true</shadedArtifactAttached>
-							<shadedClassifierName>allinone</shadedClassifierName>
-							<artifactSet>
-								<includes>
-									<include>*:*</include>
-								</includes>
-							</artifactSet>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-									<resource>reference.conf</resource>
-								</transformer>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<manifestEntries>
-										<Main-Class>akka.Main</Main-Class>
-									</manifestEntries>
-								</transformer>
-							</transformers>
-							<filters>
-								<filter>
-									<!-- solution to the signature repackaging problem is this filter: 
-										exclude the signatures! -->
-									<artifact>*:*</artifact>
-									<excludes>
-										<exclude>META-INF/*.SF</exclude>
-										<exclude>META-INF/*.DSA</exclude>
-										<exclude>META-INF/*.RSA</exclude>
-									</excludes>
-								</filter>
-							</filters>
-						</configuration>
-					</execution>
-				</executions>
-				<configuration>
-					<finalName>uber-${project.artifactId}-${project.version}</finalName>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.2.0</version>
-				<configuration>
-					<additionalparam>-Xdoclint:none</additionalparam>
-					<aggregate>true</aggregate>
-					<breakiterator>true</breakiterator>
-					<quiet>true</quiet>
-					<source>1.8</source>
-					<verbose>false</verbose>
-					<linksource>true</linksource>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
-	<profiles>
-
-		<!-- Note: before you can use this build profile you need to set up an 
-			environment that contains correctly signed keys. Configure the keystore properties 
-			and the profile in ~/.m2/settings.xml -->
-		<profile>
-			<id>codesigning</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jarsigner-plugin</artifactId>
-						<version>3.0.0</version>
-						<executions>
-							<execution>
-								<id>sign</id>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-
-						<configuration>
-
-							<verbose>true</verbose>
-							<certs>true</certs>
-							<storetype>${keystore.type}</storetype>
-							<keystore>${keystore.path}</keystore>
-							<alias>${keystore.alias}</alias>
-							<storepass>${keystore.store.password}</storepass>
-							<keypass>${keystore.key.password}</keypass>
-							<signedjar>${project.build.directory}/${project.build.finalName}.jar</signedjar>
-							<verify>true</verify>
-							<verbose>true</verbose>
-							<goal>sign</goal>
-							<arguments>
-								<argument>-tsa</argument>
-								<argument>https://timestamp.geotrust.com/tsa</argument>
-							</arguments>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
-
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
