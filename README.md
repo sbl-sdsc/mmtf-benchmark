@@ -5,7 +5,7 @@ Work in progres ...
 ## Installation
 
 1. Install Java 11
-2. Download [Maven])(https://maven.apache.org/install.html)
+2. Download [Maven](https://maven.apache.org/install.html)
 3. Clone this repo
 
 ```git clone https://github.com/sbl-sdsc/mmtf-benchmark```
@@ -20,8 +20,7 @@ Work in progres ...
 
 6. Download Saccharomyces cerevisiae proteome from AlphaFold database version 4 
 
-```wget https://ftp.ebi.ac.uk/pub/databases/alphafold/```
-latest/UP000002311_559292_YEAST_v4.tar
+```wget https://ftp.ebi.ac.uk/pub/databases/alphafold/latest/UP000002311_559292_YEAST_v4.tar```
 
 7. Copy the .cif.gz files into the $AF_YEAST_v4/cif directory
 
